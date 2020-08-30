@@ -1,6 +1,8 @@
 package com.haozz.activitidemo.init;
 
 import org.activiti.engine.*;
+import org.activiti.engine.history.HistoricActivityInstance;
+import org.activiti.engine.history.HistoricActivityInstanceQuery;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -107,5 +109,37 @@ public class ProcessDeployment {
     public void deleteDeployment1() {
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.deleteDeployment("1", true);
+    }
+
+
+    /**
+     * 查询流程历史信息
+     */
+//    @Test
+    public void getHistoryInfo() {
+
+        HistoryService historyService = processEngine.getHistoryService();
+        HistoricActivityInstanceQuery historicActivityInstanceQuery =
+                historyService.createHistoricActivityInstanceQuery().processInstanceId("2501");
+        for (HistoricActivityInstance historicActivityInstance : historicActivityInstanceQuery.list()) {
+            System.out.println("============================");
+            System.out.println(historicActivityInstance.getActivityName());
+            System.out.println(historicActivityInstance.getAssignee());
+            System.out.println(historicActivityInstance.getActivityType());
+        }
+
+    }
+
+
+    /**
+     * 启动流程
+     */
+//    @Test
+    public void start1() {
+        RuntimeService runtimeService = processEngine.getRuntimeService();
+        //根据key启动对应的流程
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("leave", "1001");
+        //每启动一个流程都会生成一个对应的id,我们将Id输出
+        System.out.println(processInstance.getId());
     }
 }
