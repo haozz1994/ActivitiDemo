@@ -12,7 +12,7 @@
         <property name="jdbcDriver" value="com.mysql.jdbc.Driver"></property>
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activiti?characterEncoding=utf-8"></property>
         <property name="jdbcUsername" value="root"></property>
-        <property name="jdbcPassword" value="1234"></property>
+        <property name="jdbcPassword" value=""></property>
         <!--配置创建表策略，没有表是自动创建-->
         <property name="databaseSchemaUpdate" value="true"></property>
     </bean>

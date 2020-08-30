@@ -1,4 +1,4 @@
-package java.com.haozz.activitidemo;
+package com.haozz.activitidemo.init;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @date 15:20 2020-08-30
  */
 @SpringBootTest
-public class Init {
+public class InitTest {
 
     @Test
     public void init() {
